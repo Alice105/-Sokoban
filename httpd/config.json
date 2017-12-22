@@ -10,5 +10,9 @@
  "/sokoban.js": {
  "url": "../htdocs/js/sokoban.js",
  "type": "text/js"
+},
+ "/SokobanClone_byVellidragon.png": {
+ "url": "../htdocs/assets/png/SokobanClone_byVellidragon.png",
+ "type": "png/image"
  }
  }
