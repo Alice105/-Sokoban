@@ -1,5 +1,14 @@
 /**
  *  @file       index.js
+ *  @brief      The entry file of Sokoban.
+ *  @author     Yiwei Chiao (ywchiao@gmail.com)
+ *  @date       11/17/2017 created.
+ *  @date       01/05/2018 last modified.
+ *  @version    0.1.0
+ *  @since      0.1.0
+ *  @copyright  MIT, © 2017-2018 Yiwei Chiao
+ *  @details
+ *
  *  The entry file of Sokoban.
  */
 'use strict';
@@ -391,7 +400,7 @@ let prototypeGameState = {
 
   putBoxOnGoal: function ({x, y}) {
     this.level[y] = replaceAt(this.level[y], x, SOKOBAN.BOX_ON_GOAL);
-
+	//alert("you win");
     return this;
   },
 
@@ -559,6 +568,8 @@ let sokoban = {
     this.paint();
 
     //alert(You win);
+    //[0,1,2].forEach(n=>{console.log(n);)};
+    
   },
 };
 

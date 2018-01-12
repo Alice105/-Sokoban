@@ -1,18 +1,21 @@
 {
- "/": {
- "url": "../htdocs/index.html",
- "type": "text/html"
- },
- "/styles.css": {
- "url": "../htdocs/assets/css/styles.css",
- "type": "text/css"
- },
- "/sokoban.js": {
- "url": "../htdocs/js/sokoban.js",
- "type": "text/js"
-},
- "/SokobanClone_byVellidragon.png": {
- "url": "../htdocs/assets/png/SokobanClone_byVellidragon.png",
- "type": "png/image"
- }
- }
+  "/": {
+    "url": "../htdocs/index.html",
+    "type": "text/html"
+  },
+
+  "/sokoban.js": {
+    "url": "../htdocs/js/sokoban.js",
+    "type": "application/javascript"
+  },
+
+  "/styles.css": {
+    "url": "../htdocs/assets/css/styles.css", 
+    "type": "text/css"
+  },
+
+  "/SokobanClone_byVellidragon.png": {
+    "url": "../htdocs/assets/png/SokobanClone_byVellidragon.png",
+    "type": "image/png"
+  }
+}
