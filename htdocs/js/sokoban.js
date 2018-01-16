@@ -24,7 +24,11 @@
  *  *    箱子在目標點上 (box on goal square)
  *  空白 地板 (floor)
  */
-const SOKOBAN = {
+//TS Add 
+ var GoalNo=0; //計算關卡有幾個箱子要歸位
+ var BoxOnGoalNo=0; //先在已經有幾個箱子歸位。
+
+ const SOKOBAN = {
   BOX: '$',
   BOX_ON_GOAL: '*',
   FLOOR: ' ',
@@ -400,6 +404,9 @@ let prototypeGameState = {
 
   putBoxOnGoal: function ({x, y}) {
     this.level[y] = replaceAt(this.level[y], x, SOKOBAN.BOX_ON_GOAL);
+	//BoxOnGoalNo++;
+	//alert(GoalNo);
+	//if (GoalNo == 0)
 	//alert("you win");
     return this;
   },
@@ -503,8 +510,8 @@ let sokoban = {
    */
   paint: function () {
     let height = this.level.length;
-
-    for (let x = 0; x < height; x ++) {
+	GoalNo=0;
+	 for (let x = 0; x < height; x ++) {
       for (let y = 0; y < height; y ++) {
         this.brush.save();
         this.brush.translate(32*x, 32*y);
@@ -514,17 +521,18 @@ let sokoban = {
             switch (value) {
               case SOKOBAN.MAN:
                 this.floor();
-
                 break;
 
               case SOKOBAN.MAN_ON_GOAL:
                 this.goal();
-
                 break;
             };
 
             this[this.tiling[key]]();
-
+			//不能用，因為任何移動都是用pain來重新繪製，GoalNo會每次增加該關所有的goal
+			//TS add start
+			if (key=="GOAL"||key=="MAN_ON_GOAL") GoalNo++;
+			//TS add End
             return true;
           };
         });
@@ -534,6 +542,7 @@ let sokoban = {
     };
   },
 
+ 
   /**
    * 依傳入的遊戲關卡編號，初始遊戲
    *
@@ -541,7 +550,9 @@ let sokoban = {
    */
   start: function (level) {
     this.level = JSON.parse(JSON.stringify(levels[level]));
-    this.paint();
+	//GoalNo=0; // TS Add 每次開新關卡時將 GoalNo 有幾個箱子要歸位設為 0 重新計算。
+    //BoxOnGoalNo=0;//TS add 同上
+	this.paint();
   },
 
   /**
@@ -566,7 +577,10 @@ let sokoban = {
   update: function (e) {
     this.move(e);
     this.paint();
-
+	//alert(GoalNo);
+	if (GoalNo == 0)
+		
+		alert("you win");
     //alert(You win);
     //[0,1,2].forEach(n=>{console.log(n);)};
     
